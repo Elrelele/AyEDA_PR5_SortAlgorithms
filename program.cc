@@ -74,9 +74,9 @@ int main(const int argc, const char** argv) {
     case 1: 
       sorted_sequence = new InsertionSort<NIF>(seq); 
     break;
-    // case 2: 
-    //   sorted_sequence = new ShakeSort<NIF>(seq); 
-  //   break;
+    case 2: 
+      sorted_sequence = new ShakeSort<NIF>(seq); 
+    break;
     // case 3: 
     //   sorted_sequence = new QuickSort<NIF>(&seq); 
   //   break;
