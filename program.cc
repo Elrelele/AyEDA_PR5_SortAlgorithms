@@ -16,10 +16,10 @@
 #include "parse_args.h"
 #include "sort_method.h"
 #include "nif.h"
+#include "trace.h"
 
 /*
-  To do: - una clase trace que se encargue de mostrar o no la traza dependiendo de si se le dice si o no por argumentos
-         - El resto de los metodos de ordenación (pd: a Shell sort se le pasa un alfa "0 < alpha < 1" por parametro al constructor)
+  To do: El resto de los metodos de ordenación (pd: a Shell sort se le pasa un alfa "0 < alpha < 1" por parametro al constructor)
 */
 
 
@@ -68,15 +68,8 @@ int main(const int argc, const char** argv) {
     default: throw std::runtime_error("Error: Algoritmo de ordenación no válido.");
   }
 
-  sorted_sequence->Sort();
-
-  if (args.trace) {
-    std::cout << "NIFs ordenados:" << std::endl;
-    for (int i = 0; i < seq.GetSize(); ++i) {
-      std::cout << seq[i] << " ";
-    }
-    std::cout << std::endl;
-  }
+  Trace trace(args.trace);
+  sorted_sequence->Sort(trace);
 
   delete sorted_sequence; 
   return 0;

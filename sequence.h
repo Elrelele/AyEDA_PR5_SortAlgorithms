@@ -25,7 +25,7 @@ class StaticSequence : public Sequence<Key> {
     StaticSequence(size_t size);
     ~StaticSequence() { delete[] data_; }
 
-    size_t GetSize();
+    size_t GetSize() const;
 
     Key& operator[](const size_t&);
     const Key& operator[](const size_t&) const;
@@ -42,7 +42,7 @@ StaticSequence<Key>::StaticSequence(size_t size) : size_{size} {
 }
 
 template <class Key>
-size_t StaticSequence<Key>::GetSize() {
+size_t StaticSequence<Key>::GetSize() const {
   return size_;
 }
 

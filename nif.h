@@ -28,7 +28,7 @@ class NIF {
     bool operator<(const NIF&) const;
     bool operator>(const NIF&) const;
     
-    size_t size() const;
+    size_t Size() const;
 
     friend std::istream& operator>>(std::istream&, NIF&);
     

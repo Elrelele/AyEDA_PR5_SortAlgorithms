@@ -2,6 +2,8 @@
 #define SORT_METHOD_H_
 
 #include "sequence.h"
+#include "trace.h"
+
 #include <cstddef>
 
 template <class Key>
@@ -10,7 +12,7 @@ class SortMethod {
     SortMethod(StaticSequence<Key>* array) : array_(array) {}
     virtual ~SortMethod() = default;
   
-    virtual void Sort() = 0;
+    virtual void Sort(Trace&) = 0;
 
   protected:
     StaticSequence<Key>* array_;
@@ -20,20 +22,27 @@ template <class Key>
 class InsertionSort : public SortMethod<Key> {
   public:
     InsertionSort(StaticSequence<Key>& array) : SortMethod<Key>{&array} {}
-    void Sort();
+    void Sort(Trace&);
 };
 
 template <class Key>
-void InsertionSort<Key>::Sort() {
+void InsertionSort<Key>::Sort(Trace& trace) {
   for (int i = 1; i < this->array_->GetSize(); ++i) {
     int j = i - 1;
-    Key x = (*this->array_)[i]; 
+    Key x = (*this->array_)[i];
+    
+    trace.ShowMessage("");
+    trace.ShowMessage("Iteration " + std::to_string(i) + ":");
+    
     while (j >= 0 && (*this->array_)[j] > x) {
       (*this->array_)[j + 1] = (*this->array_)[j]; 
       j--;
     }
     (*this->array_)[j + 1] = x; 
+
+    trace.ShowSequenceIfEnabled(*this->array_);
   }
+  trace.ShowSequence(*this->array_);
 }
 
 // template <class Key>

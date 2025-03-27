@@ -39,7 +39,7 @@ bool NIF::operator>(const NIF& number) const {
   return this->nif_ > number.nif_;
 }
 
-size_t NIF::size() const {
+size_t NIF::Size() const {
   return NIF_SIZE;
 }
 
