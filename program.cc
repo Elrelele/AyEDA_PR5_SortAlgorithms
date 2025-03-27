@@ -11,6 +11,7 @@
     - 27/03/25 Creation of the trace file and end of the project
 */
 
+#include <ctime>
 #include <iostream>
 
 #include "parse_args.h"
@@ -48,6 +49,7 @@ int main(const int argc, const char** argv) {
     break;
     case InsertType::RANDOM:
       std::cout << args.size << " Random NIFs are being generated:" << std::endl;
+      srand(time(NULL));
       for (int i = 0; i < args.size; ++i) {
         seq[i] = NIF();
       }  
@@ -82,9 +84,9 @@ int main(const int argc, const char** argv) {
     case 4: 
       sorted_sequence = new HeapSort<NIF>(seq); 
     break;
-    // case 5: 
-    //   sorted_sequence = new ShellSort<NIF>(&seq, 0.5); 
-  //   break; 
+    case 5: 
+      sorted_sequence = new ShellSort<NIF>(seq, 0.5); 
+    break; 
     default: throw std::runtime_error("Error: Algoritmo de ordenación no válido.");
   }
 
