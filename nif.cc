@@ -12,7 +12,7 @@
 constexpr size_t NIF_SIZE = 8;
 
 NIF::NIF() {
-  nif_ = rand() % max_digits;
+  nif_ = (rand() % 90000000) + 10000000;
 }
 
 NIF::NIF(long number) {

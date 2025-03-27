@@ -23,7 +23,6 @@
   To do: El resto de los metodos de ordenación (pd: a Shell sort se le pasa un alfa "0 < alpha < 1" por parametro al constructor)
 */
 
-
 void ShowMenu() {
   std::cout << "Select the sort algorithm:\n";
   std::cout << "1. InsertionSort\n";
@@ -80,12 +79,12 @@ int main(const int argc, const char** argv) {
     case 3: 
       sorted_sequence = new QuickSort<NIF>(seq); 
     break;
-    // case 4: 
-    //   sorted_sequence = new HeapSort<NIF>(&seq); 
-  //   break;
+    case 4: 
+      sorted_sequence = new HeapSort<NIF>(seq); 
+    break;
     // case 5: 
     //   sorted_sequence = new ShellSort<NIF>(&seq, 0.5); 
-  //   break; // Ajustar alpha si es necesario
+  //   break; 
     default: throw std::runtime_error("Error: Algoritmo de ordenación no válido.");
   }
 
