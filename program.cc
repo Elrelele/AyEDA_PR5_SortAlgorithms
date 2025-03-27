@@ -17,6 +17,7 @@
 #include "sort_method.h"
 #include "nif.h"
 #include "trace.h"
+#include <fstream>
 
 /*
   To do: El resto de los metodos de ordenación (pd: a Shell sort se le pasa un alfa "0 < alpha < 1" por parametro al constructor)
@@ -45,6 +46,26 @@ int main(const int argc, const char** argv) {
         std::cin >> nifValue;
         seq[i] = NIF(nifValue);
       }
+    break;
+    case InsertType::RANDOM:
+      std::cout << args.size << " Random NIFs are being generated:" << std::endl;
+      for (int i = 0; i < args.size; ++i) {
+        seq[i] = NIF();
+      }  
+    break;
+    case InsertType::FILE:
+      std::cout << "The numbers will be read from: " << args.filename << std::endl;
+      std::ifstream input_file(args.filename);
+      if (!input_file) {
+        std::cerr << "Error: Could not open file " << args.filename << std::endl;
+        return 1;
+      }
+      for (int i = 0; i < args.size; ++i) {
+        NIF nifValue;
+        input_file >> nifValue;  
+        seq[i] = NIF(nifValue);
+      }
+      input_file.close();
     break;
   }
 

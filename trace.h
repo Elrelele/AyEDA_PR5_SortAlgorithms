@@ -25,9 +25,6 @@ class Trace {
 
     template <class Key>
     void ShowSequence(const StaticSequence<Key>& array) const {
-
-      std::cout << "\nThe Sorted Sequence is: ";
-
       for (std::size_t i = 0; i < array.GetSize(); ++i) 
         std::cout << array[i] << " ";
       std::cout << std::endl;

@@ -27,6 +27,9 @@ class InsertionSort : public SortMethod<Key> {
 
 template <class Key>
 void InsertionSort<Key>::Sort(Trace& trace) {
+  trace.ShowMessage("\nThe sequence to order will be: ");
+  trace.ShowSequence(*this->array_);
+
   for (int i = 1; i < this->array_->GetSize(); ++i) {
     int j = i - 1;
     Key x = (*this->array_)[i];
@@ -42,6 +45,7 @@ void InsertionSort<Key>::Sort(Trace& trace) {
 
     trace.ShowSequenceIfEnabled(*this->array_);
   }
+  trace.ShowMessage("\nThe sorted sequence is: ");
   trace.ShowSequence(*this->array_);
 }
 
