@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-#include "sequence.h"
+#include "static_sequence.h"
 
 class Trace {
   public:

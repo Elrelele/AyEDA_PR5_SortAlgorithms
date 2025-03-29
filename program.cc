@@ -13,25 +13,17 @@
 
 #include <ctime>
 #include <iostream>
+#include <fstream>
 
 #include "parse_args.h"
 #include "sort_method.h"
+#include "insertion_sort.h"
+#include "shake_sort.h"
+#include "quick_sort.h"
+#include "heap_sort.h"
+#include "shell_sort.h"
 #include "nif.h"
 #include "trace.h"
-#include <fstream>
-
-/*
-  To do: El resto de los metodos de ordenación (pd: a Shell sort se le pasa un alfa "0 < alpha < 1" por parametro al constructor)
-*/
-
-void ShowMenu() {
-  std::cout << "Select the sort algorithm:\n";
-  std::cout << "1. InsertionSort\n";
-  std::cout << "2. ShakeSort\n";
-  std::cout << "3. QuickSort\n";
-  std::cout << "4. HeapSort\n";
-  std::cout << "5. ShellSort\n";
-}
 
 int main(const int argc, const char** argv) {
   Args args = ParseArguments(argc, argv);
