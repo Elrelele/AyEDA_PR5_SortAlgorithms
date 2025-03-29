@@ -25,9 +25,11 @@ void QuickSort<Key>::Sort(Trace& trace) {
 
 template <class Key>
 void QuickSort<Key>::QuickSortRecursive(int begin, int end, Trace& trace) {
+  if (begin >= end) return; // Base case: single element or invalid range
+
   size_t i = begin;
   size_t j = end;
-  Key pivot = (*this->array_)[(i + j) / 2];
+  Key pivot = (*this->array_)[(begin + end) / 2]; // Middle element as pivot
 
   trace.ShowMessage("\nPivot chosen: " + std::to_string(pivot));
 
@@ -41,9 +43,10 @@ void QuickSort<Key>::QuickSortRecursive(int begin, int end, Trace& trace) {
       j--;
     }
   }
-  
+
   trace.ShowSequenceIfEnabled(*this->array_);
 
+  // Recursive calls for left and right partitions
   if (begin < j) QuickSortRecursive(begin, j, trace);
   if (i < end) QuickSortRecursive(i, end, trace);
 }
